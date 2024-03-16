@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Authentication</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .container {
+              height: 35px;
+              position: relative;
+            }
+            
+            .vertical-center {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+            </style>
+    </head>
+    <body>
+
+
+        {%for message in messages%}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert"></button>
+            <span aria-hidden="true">&times;</span>
+        </div>
+        {%endfor%}
+        
+        <h3>Welcome to my website</h3>
+        {% if user.is_authenticated %}
+        <h3 style="text-align:center;">Hello {{fname}}</h3>
+        <h4 style="text-align: center;">You are successfully logged in</h4>
+        <div class="container">
+            <div class="vertical-center">
+                <button type="submit"><a href="/signout">SignOut</a></button>
+            </div>
+        </div>
+        {%else%}
+        <h1 style="text-align:center;">Login</h1>
+        <div class="container">
+            <div class="vertical-center">
+                <button type="submit"><a href="/signup">SignUp</a></button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="vertical-center">
+                <button type="submit"><a href="/signin">SignIn</a></button>
+            </div>
+        </div>
+        {%endif%}
+        <script src="" async defer></script>
+    </body>
+</html>
